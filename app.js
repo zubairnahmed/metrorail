@@ -1,7 +1,3 @@
-const Station = require('./Classes/station');
+const db = require('./Database/database');
 
-let station1 = new Station("station3");
-
-console.log(Station.findStationById(1));
-
-console.log(station1.getNextStation());
+// test our database API here

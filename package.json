@@ -4,6 +4,7 @@
   "description": "Create a database API for a model train system",
   "main": "app.js",
   "scripts": {
+    "start": "./node_modules/.bin/nodemon app.js --ignore node_modules/",
     "test": "echo \"Error: no test specified\" && exit 1",
     "repl": "echo 'this entered here'",
     "linter": "./node_modules/.bin/eslint .",
@@ -28,7 +29,9 @@
     "eslint": "^3.19.0"
   },
   "dependencies": {
+    "express": "^4.15.2",
     "knex": "^0.13.0",
+    "nodemon": "^1.11.0",
     "pg": "^6.1.5"
   }
 }
