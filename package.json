@@ -7,13 +7,13 @@
     "start": "./node_modules/.bin/nodemon app.js --ignore node_modules/",
     "test": "echo \"Error: no test specified\" && exit 1",
     "repl": "echo 'this entered here'",
-    "linter": "./node_modules/.bin/eslint .",
-    "db:create": "echo \"Error: no create specified\" && exit 1",
-    "db:migrate": "echo \"Error: no migrate specified\" && exit 1",
-    "db:seed": "echo \"Error: no seed specified\" && exit 1",
-    "db:drop": "echo \"Error: no drop specified\" && exit 1",
-    "db:reset": "echo \"Error: no reset specified\" && exit 1",
-    "db:console": "echo \"Error: no console specified\" && exit 1"
+    "linter": "node_modules/.bin/eslint .",
+    "db:create": "createdb metrorail_dev",
+    "db:migrate": "node_modules/.bin/knex migrate:latest",
+    "db:seed": "node_modules/.bin/knex seed:run",
+    "db:drop": "dropdb metrorail_dev",
+    "db:reset": "dropdb metrorail_dev && createdb metrorail_dev && node_modules/.bin/knex migrate:latest",
+    "db:console": "psql metrorail_dev"
   },
   "repository": {
     "type": "git",
