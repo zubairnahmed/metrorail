@@ -3,6 +3,9 @@ module.exports = {
     client: 'postgresql',
     connection: {
       database: 'metrorail_dev'
+    },
+    seeds: {
+      directory: './Database/Seeds'
     }
   }
 };
