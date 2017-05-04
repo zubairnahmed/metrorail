@@ -5,7 +5,7 @@ exports.up = function(knex, Promise) {
 
     knex.schema.createTable('trains', function(table) {
         table.increments('id').primary();
-        table.integer('num');
+        table.integer('number');
         table.integer('capacity');
         table.integer('number_of_passengers');
         table.integer('current_station_id')

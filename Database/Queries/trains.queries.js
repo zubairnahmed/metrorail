@@ -1,9 +1,15 @@
 const db = require("../database.js");
 
-const findTrain = (num) => {
+const findTrainByNumber = (number) => {
   return db("trains")
     .select()
-    .where("num", "=",  num);
+    .where("number", "=",  number);
+};
+
+const findTrainById = (id) => {
+  return db("trains")
+    .select()
+    .where("id", "=",  id);
 };
 
 const findTrainsAtStation = (stationId) => {
@@ -13,6 +19,7 @@ const findTrainsAtStation = (stationId) => {
 };
 
 module.exports = {
-  findTrain: findTrain,
+  findTrainByNumber: findTrainByNumber,
+  findTrainById: findTrainById,
   findTrainsAtStation: findTrainsAtStation
 };
