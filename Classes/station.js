@@ -18,72 +18,55 @@ module.exports = class Station {
     return this.stationName;
   }
 
-  getWaitingPassengers(callback) {
-    passengerQueries.findPassengersByStation(this.stationName)
-      .then(data => {
-        callback(data);
-      })
+  getWaitingPassengers() {
+    return passengerQueries.findPassengersByStation(this.stationName)
       .catch(error => {
         console.log('An error occured', error);
       });
   }
 
-  getPassengersWithTickets(callback) {
-    passengerQueries.findPassengersByStation(this.stationName)
+  getPassengersWithTickets() {
+    return passengerQueries.findPassengersByStation(this.stationName)
       .then(data => {
         let filteredData = data.filter(element => {
           return element.has_ticket;
         });
-        callback(filteredData);
+        return filteredData;
       })
       .catch(error => {
         console.log('An error occured', error);
       });
   }
 
-  getPreviousStation(callback) {
+  getPreviousStation() {
     let preOrder = this.order - 1;
     if (preOrder === 0) {
-      stationQueries.getCountOfStations()
-        .then(number => {
-          preOrder = number[0].count;
-          return preOrder;
-        })
-        .then(order => {
-          return stationQueries.findStationByOrder(order);
-        })
-        .then(station => {
-          callback(station);
-        });
+      return stationQueries.getCountOfStations()
+        .then(number => number[0].count )
+        .then(order => stationQueries.findStationByOrder(order) );
     }
     else {
-      stationQueries.findStationByOrder(preOrder)
-      .then(station => {
-        callback(station);
-      })
+      return stationQueries.findStationByOrder(preOrder);
     }
   }
 
-  getNextStation(callback) {
+  getNextStation() {
     let nextOrder = this.order + 1;
-    stationQueries.getCountOfStations()
+    return stationQueries.getCountOfStations()
       .then(count => {
         if(nextOrder > count) {
           nextOrder = 1;
         }
-        stationQueries.findStationByOrder(nextOrder)
-          .then(station => {
-            callback(station);
-          });
-    })
+        return stationQueries.findStationByOrder(nextOrder);
+      });
   }
 
-  static getNextTrainOf( name, callback ) {
-    stationQueries.findStationByName(name)
+  static getNextTrainOf( name ) {
+    return stationQueries.findStationByName(name)
       .then(station => {
         let preOrder = station[0].order - 1;
         if ( preOrder === 0 ) {
-          stationQueries.getCountOfStations()
+          return stationQueries.getCountOfStations()
             .then(count => {
               preOrder = count[0].count;
               return preOrder;
@@ -93,19 +76,13 @@ module.exports = class Station {
             })
             .then(station => {
               return trainQueries.findTrainsAtStation(station[0].id);
-            })
-            .then(trains => {
-              callback(trains);
-            })
+            });
         }
         else {
-          stationQueries.findStationByOrder(preOrder)
+          return stationQueries.findStationByOrder(preOrder)
             .then( station => {
               return trainQueries.findTrainsAtStation(station[0].id);
-            })
-            .then( trains => {
-              callback(trains);
-            })
+            });
         }
       })
   }
@@ -117,6 +94,7 @@ module.exports = class Station {
         this.stationName = station[0].station_name;
         this.order = station[0].order;
         this.id = station[0].id;
+        return this;
       })
   }
 }
