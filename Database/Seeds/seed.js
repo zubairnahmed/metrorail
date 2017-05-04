@@ -2,22 +2,22 @@ const db = require('../database');
 
 const trainData = [
     {
-      num: 1,
+      number: 1,
       capacity: 55,
       number_of_passengers: 0
     },
     {
-      num: 2,
+      number: 2,
       capacity: 120,
       number_of_passengers: 0
     },
     {
-      num: 3,
+      number: 3,
       capacity: 23,
       number_of_passengers: 0
     },
     {
-      num: 4,
+      number: 4,
       capacity: 70,
       number_of_passengers: 0
     }

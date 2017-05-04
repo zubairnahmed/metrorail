@@ -10,7 +10,7 @@ const update = (table, object) => {
   return db(table)
     .returning("id")
     .where("id", "=", object.id)
-    .update(object);
+    .update(object)
 }
 
 const del = (table, id) => {

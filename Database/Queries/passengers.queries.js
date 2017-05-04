@@ -2,7 +2,6 @@ const db = require("../database.js");
 
 const findPassengersByName = (name) => {
   return db("passengers")
-    .select()
     .where("name", name);
 };
 
@@ -13,16 +12,39 @@ const findPassengersByStation = (stationName) => {
       "passengers.has_ticket", "passengers.current_train_id",
       "passengers.current_station_id")
     .where("stations.station_name", stationName);
-}
+};
 
+const findByStationIdAndTicket = (stationId) => {
+  return db("passengers")
+    .where({
+      current_station_id: stationId,
+      has_ticket: true
+    })
+};
 const findPassengersByTrain = (trainId) => {
   return db("passengers")
-    .select()
     .where("current_train_id", trainId);
-}
+};
+
+const findPassengerById = (passengerId) => {
+  return db("passengers")
+    .where("id", passengerId)
+    .first();
+};
+
+const findDesAndTrainId = (destinationId, trainId) => {
+  return db("passengers")
+    .where({
+      destination_id: destinationId,
+      current_train_id: trainId
+    })
+};
 
 module.exports = {
   findPassengersByName: findPassengersByName,
   findPassengersByStation: findPassengersByStation,
-  findPassengersByTrain: findPassengersByTrain
+  findPassengersByTrain: findPassengersByTrain,
+  findPassengerById: findPassengerById,
+  findDesAndTrainId: findDesAndTrainId,
+  findByStationIdAndTicket: findByStationIdAndTicket
 };
