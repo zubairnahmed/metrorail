@@ -100,11 +100,11 @@ module.exports = class Train {
   loadInstanceOfTrainById(id = this.id) {
     return trainQueries.findTrainById(id)
       .then(train => {
-        this.id = train[0].id;
-        this.number = train[0].number;
-        this.numberOfPassengers = train[0].number_of_passengers;
-        this.capacity = train[0].capacity;
-        this.currentStationId = train[0].current_station_id;
+        this.id = train.id;
+        this.number = train.number;
+        this.numberOfPassengers = train.number_of_passengers;
+        this.capacity = train.capacity;
+        this.currentStationId = train.current_station_id;
         return this;
       })
       .catch(error => {
