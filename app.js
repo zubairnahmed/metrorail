@@ -1,9 +1,19 @@
-const express = require('express');
-const app = express();
-const db = require('./Database/database');
+const Station = require('./Classes/station');
 
-const port = 3000;
+const station1 = new Station('sdfksdfkjh', 1, 1);
 
-app.listen(port, () => {
-  console.log('Server is running on port', port);
+// station1.getWaitingPassengers(data => {
+//   console.log(data);
+// });
+
+// station1.getPassengersWithTickets(data => {
+//   console.log(data);
+// });
+
+// station1.getPreviousStation(console.log);
+// station1.getNextStation(console.log);
+// Station.getNextTrainOf(station1.stationName, console.log);
+
+station1.loadInstanceOfStationById().then(data => {
+  console.log('This is the station', station1);
 });

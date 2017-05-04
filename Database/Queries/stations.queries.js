@@ -6,14 +6,26 @@ const findStationById = (id) => {
     .where("id", "=", id);
 };
 
+const findStationByOrder = (order) => {
+  return db("stations")
+    .select()
+    .where("order", "=", order);
+};
+
 const findStationByName = (name) => {
   return db("stations")
     .select()
     .where("station_name", "=",  name);
 };
 
+const getCountOfStations = () => {
+  return db("stations").count();
+}
+
 
 module.exports = {
   findStationById: findStationById,
-  findStationByName: findStationByName
+  findStationByOrder: findStationByOrder,
+  findStationByName: findStationByName,
+  getCountOfStations: getCountOfStations
 };

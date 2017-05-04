@@ -6,6 +6,13 @@ const findTrain = (num) => {
     .where("num", "=",  num);
 };
 
+const findTrainsAtStation = (stationId) => {
+  return db("trains")
+    .select()
+    .where("current_station_id", "=",  stationId);
+};
+
 module.exports = {
-  findTrain: findTrain
+  findTrain: findTrain,
+  findTrainsAtStation: findTrainsAtStation
 };
