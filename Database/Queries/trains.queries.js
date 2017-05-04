@@ -2,20 +2,18 @@ const db = require("../database.js");
 
 const findTrainByNumber = (number) => {
   return db("trains")
-    .select()
-    .where("number", "=",  number);
+    .where("number", number);
 };
 
 const findTrainById = (id) => {
   return db("trains")
-    .select()
-    .where("id", "=",  id);
+    .where("id", id)
+    .first();
 };
 
 const findTrainsAtStation = (stationId) => {
   return db("trains")
-    .select()
-    .where("current_station_id", "=",  stationId);
+    .where("current_station_id", stationId);
 };
 
 module.exports = {
