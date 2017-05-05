@@ -11,11 +11,79 @@ Base repository for the MetroRail goals:
 
 ## Installation and Setup
 
-_Fill this out_
+Assumption: End user has Postregres intalled:
+`$ brew install postgres`
+
+```
+$ git clone https://github.com/zubairnahmed/metrorail.git
+
+$ npm install
+
+$ npm run db:create
+
+$ npm run db:migrate
+
+$ npm run db:seed
+
+```
 
 ## Usage and Examples
 
-_...and this_
+`$ npm start`: start program.
+
+End user, who is a programmer, can now play with the database interface to manage Metrorail_dev database.
+
+Classes implemented:
+Station -- creates station instances, and interfaces with database.
+`const Station = require('./Classes/station');`
+
+Instantiate a station: new Station([id, [name, [order]]])
+`let station = new Station(1);`
+
+Get the id of the station instance.
+`station.getId();`
+
+Get the station name of the station instance.
+`station.getStationName();`
+
+Get the passengers waiting in a particular station.
+```
+station.getWaitingPassengers()
+  .then(results // returns an array of passengers);
+```
+
+Get the passengers with tickets at a particular station.
+```
+station.getPassengersWithTickets()
+  .then(results // returns an array of passengers);
+```
+Get the previous station in the line.
+```
+station.getPreviousStation()
+  .then(result // returns the previous station object);
+```
+Get the next station in the line.
+```
+station.getNextStation()
+  .then(result // returns the next station object);
+```
+Get the next train of the Station class. This is a static method.
+```
+Station.getNextTrainOf('Downtown')
+  .then(result // return the next station object);
+```
+Perform database operations on the instances of Station.
+```
+station.save(); // inserts into database
+station.update(); // updates the database
+station.del(); // deletes from the database
+```
+
+Load an instance of the station object, given id, from the database.
+```
+station.loadInstanceOfStationById([id)
+```
+
 
 ## Specifications
 
@@ -25,77 +93,77 @@ Expose the following commands (and more, if you need) using the `scripts` proper
 
 - [ ] `$ npm run test`: run all tests.
 - [ ] `$ npm run repl`: open a REPL session with all your library code loaded.
-- [ ] `$ npm run db:create`: create the database for the current `NODE_ENV`.
-- [ ] `$ npm run db:migrate`: run all schema migrations for the database.
-- [ ] `$ npm run db:seed`: insert seed (sample) data into the database.
-- [ ] `$ npm run db:drop`: delete the database for the current `NODE_ENV`.
-- [ ] `$ npm run db:reset`: drop, create, and migrate the database.
+- [x] `$ npm run db:create`: create the database for the current `NODE_ENV`.
+- [x] `$ npm run db:migrate`: run all schema migrations for the database.
+- [x] `$ npm run db:seed`: insert seed (sample) data into the database.
+- [x] `$ npm run db:drop`: delete the database for the current `NODE_ENV`.
+- [x] `$ npm run db:reset`: drop, create, and migrate the database.
 - [ ] `$ npm run db:console`: open a console session for running queries against the database.
 
 #### User Stories
 
 Create models with interfaces to satisfy the following user stories, assuming the "user" in this case is a programmer using your data model.
 
-- [ ] As a user of the `Train` model, I can...
-  - [ ] get the number of a particular train.
-  - [ ] get the capacity for passengers of a particular train.
-  - [ ] get the passengers of a particular train.
-  - [ ] determine whether a particular train is full (at capacity) or not.
-  - [ ] determine the current station of a particular train.
-  - [ ] determine the next station of a particular train.
-  - [ ] determine which train is arriving next at a particular station.
-  - [ ] move a train to its next station.
-  - [ ] offboard passengers whose destination is a train's current station.
-  - [ ] onboard passengers of a train at the current station.
-  - [ ] find a train by its number.
-  - [ ] create a new train.
-  - [ ] save new trains to the database.
-  - [ ] update existing trains in the database.
-  - [ ] delete a train from the database.
+- [x] As a user of the `Train` model, I can...
+  - [x] get the number of a particular train.
+  - [x] get the capacity for passengers of a particular train.
+  - [x] get the passengers of a particular train.
+  - [x] determine whether a particular train is full (at capacity) or not.
+  - [x] determine the current station of a particular train.
+  - [x] determine the next station of a particular train.
+  - [x] determine which train is arriving next at a particular station.
+  - [x] move a train to its next station.
+  - [x] offboard passengers whose destination is a train's current station.
+  - [x] onboard passengers of a train at the current station.
+  - [x] find a train by its number.
+  - [x] create a new train.
+  - [x] save new trains to the database.
+  - [x] update existing trains in the database.
+  - [x] delete a train from the database.
 - [ ] As a user of the `Train` model, I receive appropriate and descriptive errors.
 - [ ] As a user of the `Station` model, I can run unit tests that exercise the specs for every public property, instance method, and class method.
-- [ ] As a user of the `Station` model, I can...
-  - [ ] get the ID of a particular station.
-  - [ ] get the location of a particular station.
-  - [ ] get the passengers waiting for a train at a particular station.
-  - [ ] get the passengers who have tickets at a particular station.
-  - [ ] get the previous station on the line for a particular station.
-  - [ ] get the next station on the line for a particular station.
-  - [ ] determine which is the next train arriving at a particular station.
-  - [ ] find a station by its ID.
-  - [ ] find a station by its location.
-  - [ ] create a new station.
-  - [ ] save new stations to the database.
-  - [ ] update existing stations in the database.
-  - [ ] delete a station from the database.
+- [x] As a user of the `Station` model, I can...
+  - [x] get the ID of a particular station.
+  - [x] get the location of a particular station.
+  - [x] get the passengers waiting for a train at a particular station.
+  - [x] get the passengers who have tickets at a particular station.
+  - [x] get the previous station on the line for a particular station.
+  - [x] get the next station on the line for a particular station.
+  - [x] determine which is the next train arriving at a particular station.
+  - [x] find a station by its ID.
+  - [x] find a station by its location.
+  - [x] create a new station.
+  - [x] save new stations to the database.
+  - [x] update existing stations in the database.
+  - [x] delete a station from the database.
 - [ ] As a user of the `Station` model, I receive appropriate and descriptive errors.
 - [ ] As a user of the `Station` model, I can run unit tests that exercise the specs for every public property, instance method, and class method.
-- [ ] As a user of the `Passenger` model, I can...
-  - [ ] get the ID of a particular passenger.
-  - [ ] get the name of a particular passenger.
-  - [ ] get a particular passenger's ticket.
-  - [ ] set the current station of a particular passenger.
-  - [ ] buy a ticket for a particular passenger from their current station to another specified station.
-  - [ ] use a ticket for a particular passenger.
-  - [ ] determine the current train for a particular passenger.
-  - [ ] determine the current station for a particular passenger.
-  - [ ] find a passenger by their ID.
-  - [ ] find a passenger by their name.
-  - [ ] find all passengers at a station.
-  - [ ] find all passengers on a train.
-  - [ ] create a new passenger.
-  - [ ] save new passengers to the database.
-  - [ ] update existing passengers in the database.
-  - [ ] delete a passenger from the database.
+- [x] As a user of the `Passenger` model, I can...
+  - [x] get the ID of a particular passenger.
+  - [x] get the name of a particular passenger.
+  - [x] get a particular passenger's ticket.
+  - [x] set the current station of a particular passenger.
+  - [x] buy a ticket for a particular passenger from their current station to another specified station.
+  - [x] use a ticket for a particular passenger.
+  - [x] determine the current train for a particular passenger.
+  - [x] determine the current station for a particular passenger.
+  - [x] find a passenger by their ID.
+  - [x] find a passenger by their name.
+  - [x] find all passengers at a station.
+  - [x] find all passengers on a train.
+  - [x] create a new passenger.
+  - [x] save new passengers to the database.
+  - [x] update existing passengers in the database.
+  - [x] delete a passenger from the database.
 - [ ] As a user of the `Passenger` model, I receive appropriate and descriptive errors.
 - [ ] As a user of the `Station` model, I can run unit tests that exercise the specs for every public property, instance method, and class method.
 - [ ] Repository includes a README file with basic installation and setup instructions.
-- [ ] All dependencies are properly declared in `package.json`.
-- [ ] All major features are added via pull requests with a clear description and concise commit messages.
-- [ ] Code uses a linter and there are no linting errors.
-- [ ] Variables, functions, files, etc. have appropriate and meaningful names.
-- [ ] Functions are small and serve a single purpose.
-- [ ] The artifact produced is properly licensed, preferably with the [MIT license][mit-license].
+- [x] All dependencies are properly declared in `package.json`.
+- [x] All major features are added via pull requests with a clear description and concise commit messages.
+- [x] Code uses a linter and there are no linting errors.
+- [x] Variables, functions, files, etc. have appropriate and meaningful names.
+- [x] Functions are small and serve a single purpose.
+- [x] The artifact produced is properly licensed, preferably with the [MIT license][mit-license].
 
 ### Stretch
 
