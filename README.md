@@ -33,8 +33,9 @@ $ npm run db:seed
 
 End user, who is a programmer, can now play with the database interface to manage Metrorail_dev database.
 
-Classes implemented:
-Station -- creates station instances, and interfaces with database.
+### Classes implemented:
+** Station ** -- creates station instances, and interfaces with database: 
+
 `const Station = require('./Classes/station');`
 
 Instantiate a station: new Station([id, [name, [order]]])
@@ -82,6 +83,76 @@ station.del(); // deletes from the database
 Load an instance of the station object, given id, from the database.
 ```
 station.loadInstanceOfStationById([id)
+```
+
+** Train Class **
+
+Creates a new instance of Train
+
+`let train = new Train([id, [number, [capacity)`
+
+Get train number
+
+`train.getNumber()`
+
+Get train capacity
+
+`train.getCapacity()`
+
+Get boarded passengers in train
+```
+train.getPassengers()
+  .then(result // Returns array of passengers currently in train)
+```
+
+Returns whether the train is full or not
+
+`train.isFull()`
+
+Get current station
+```
+train.getCurrentStation()
+  .then(result // Returns station object);
+```
+
+Get next station
+```
+train.getNextStation()
+  .then(result // Returns next station object);
+```
+
+Move train to next station
+```
+train.moveTrain()
+  .then(result // Returns station the train moved to);
+```
+
+Offboard passengers at current station (Whose destination is current station)
+```
+train.offBoard()
+  .then(result // Returns array of offboarded passengers);
+```
+
+Onboard passengers at current station
+```
+train.onBoard()
+  .then(result // Return array of onboarded passengers);
+```
+
+Load instance of train
+```
+train.loadInstanceOfTrainById([id)
+  .then(result // returns train that was loaded);
+  
+train.loadInstanceOfTrainByNum([number)
+  .then(result // returns train that was loaded);
+```
+
+Database operations
+```
+  train.save()
+  train.update()
+  train.del()
 ```
 
 
