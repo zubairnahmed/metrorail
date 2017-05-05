@@ -50,7 +50,7 @@ describe('Train class tests::: ', () => {
   it('retrieves the station the train is on', () => {
     return train.getCurrentStation()
       .then(data => {
-        expect(data).to.eql({ id: 1, station_name: 'Downtown', order: 1 });
+        expect(data).to.eql({ id: 1, station_name: 'Updated Name', order: 1 });
       })
   })
 
