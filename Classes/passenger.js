@@ -26,7 +26,7 @@ module.exports = class Passenger {
   }
 
   setStation(stationId) {
-    this.currentSationId = stationId;
+    this.currentStationId = stationId;
   }
 
   buyTicket(destinationId) {
@@ -50,6 +50,14 @@ module.exports = class Passenger {
       return Promise.reject(new Error("Passenger is not on a station"));
     }
     return stationQueries.findStationById(this.currentStationId);
+  }
+
+  static findPassengersAtStation(stationId) {
+    return passengerQueries.findPassengersByStation(stationId);
+  }
+
+  static findPassengersOnTrain(trainId) {
+    return passengerQueries.findPassengersByTrain(trainId);
   }
 
   formatForDb() {
