@@ -97,6 +97,32 @@ module.exports = class Train {
       })
   }
 
+  formatForDb() {
+    return {
+      id: this.id,
+      number: this.number,
+      capacity: this.capacity,
+      number_of_passengers: this.numberOfPassengers,
+      current_station_id: this.currentStationId
+    };
+  }
+
+  save() {
+    return genericQueries.save("trains", this.formatForDb())
+      .then(id => {
+        this.id = id[0];
+        return this;
+      })
+  }
+
+  update() {
+    return genericQueries.update("trains", this.formatForDb());
+  }
+
+  del() {
+    return genericQueries.del("trains", this.id);
+  }
+
   loadInstanceOfTrainById(id = this.id) {
     return trainQueries.findTrainById(id)
       .then(train => {
