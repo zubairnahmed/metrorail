@@ -34,18 +34,25 @@ $ npm run db:seed
 End user, who is a programmer, can now play with the database interface to manage Metrorail_dev database.
 
 ### Classes implemented:
+-------------------------------------------------------------------------
 ** Station ** -- creates station instances, and interfaces with database: 
 
 `const Station = require('./Classes/station');`
 
 Instantiate a station: new Station([id, [name, [order]]])
-`let station = new Station(1);`
+```
+let station = new Station(1);
+```
 
 Get the id of the station instance.
-`station.getId();`
+```
+station.getId(); // returns an integer.
+```
 
 Get the station name of the station instance.
-`station.getStationName();`
+```
+station.getStationName(); // returns a string.
+```
 
 Get the passengers waiting in a particular station.
 ```
@@ -58,21 +65,25 @@ Get the passengers with tickets at a particular station.
 station.getPassengersWithTickets()
   .then(results // returns an array of passengers);
 ```
+
 Get the previous station in the line.
 ```
 station.getPreviousStation()
   .then(result // returns the previous station object);
 ```
+
 Get the next station in the line.
 ```
 station.getNextStation()
   .then(result // returns the next station object);
 ```
+
 Get the next train of the Station class. This is a static method.
 ```
 Station.getNextTrainOf('Downtown')
   .then(result // return the next station object);
 ```
+
 Perform database operations on the instances of Station.
 ```
 station.save(); // inserts into database
@@ -83,79 +94,150 @@ station.del(); // deletes from the database
 Load an instance of the station object, given id, from the database.
 ```
 station.loadInstanceOfStationById([id)
+  .then(results // returns an array with station data);
 ```
 
-** Train Class **
+---------------------------------------------------------------------------
+** Train Class ** -- creates train instances, and interfaces with database:
+`const Train = require('./Classes/train');`
 
-Creates a new instance of Train
+Creates a new instance of Train.
+```
+let train = new Train([id, [number, [capacity)
+```
 
-`let train = new Train([id, [number, [capacity)`
+Get train number.
+```
+train.getNumber(); // returns an integer.
+```
 
-Get train number
+Get train capacity.
+```
+train.getCapacity(); // returns an integer.
+```
 
-`train.getNumber()`
-
-Get train capacity
-
-`train.getCapacity()`
-
-Get boarded passengers in train
+Get boarded passengers in train.
 ```
 train.getPassengers()
-  .then(result // Returns array of passengers currently in train)
+  .then(result // Returns array of passengers currently in train);
 ```
 
-Returns whether the train is full or not
+Returns whether the train is full or not.
+```
+train.isFull(); // returns a boolean.
+```
 
-`train.isFull()`
-
-Get current station
+Get current station.
 ```
 train.getCurrentStation()
-  .then(result // Returns station object);
+  .then(results // returns station object);
 ```
 
-Get next station
+Get next station.
 ```
 train.getNextStation()
-  .then(result // Returns next station object);
+  .then(results // returns next station object);
 ```
 
-Move train to next station
+Move train to next station.
 ```
 train.moveTrain()
-  .then(result // Returns station the train moved to);
+  .then(results // returns station the train moved to);
 ```
 
-Offboard passengers at current station (Whose destination is current station)
+Offboard passengers at current station (Whose destination is current station).
 ```
 train.offBoard()
-  .then(result // Returns array of offboarded passengers);
+  .then(results // returns array of offboarded passengers);
 ```
 
-Onboard passengers at current station
+Onboard passengers at current station.
 ```
 train.onBoard()
-  .then(result // Return array of onboarded passengers);
+  .then(results // returns array of onboarded passengers);
 ```
 
 Load instance of train
 ```
 train.loadInstanceOfTrainById([id)
-  .then(result // returns train that was loaded);
+  .then(results // returns train that was loaded);
   
 train.loadInstanceOfTrainByNum([number)
   .then(result // returns train that was loaded);
 ```
 
-Database operations
+Perform database operations on the instance of train
 ```
-  train.save()
-  train.update()
-  train.del()
+train.save(); // inserts into database
+train.update(); // updates the database
+train.del(); // deletes from the database
 ```
 
+-----------------------------------------------------------------------------------
+** Passenger Class ** -- creates passenger instances, and interfaces with database:
+`const Passenger = require('./Classes/passenger');`
 
+Create an instance of a passenger:
+```
+let passenger = new Passenger([id)
+```
+Get ID of passenger instance.
+```
+passenger.getId(); // returns an integer.
+```
+
+Get name of passenger instance.
+```
+pasenger.getName(); // retursn a string.
+```
+
+Get if the passegner has a ticket.
+```
+passenger.getTicket(); // returns a boolean.
+```
+
+Buy a ticket for the passenger.
+```
+passenger.buyTicket();
+```
+
+Use the ticket for the passenger.
+```
+passenger.useTicket();
+```
+
+Get the train of the passenger.
+```
+passenger.getCurrentTrain()
+  .then(results // returns an array of the train);
+```
+
+Get the station of the passenger.
+```
+passenger.getCurrentStation()
+  .then(results // returns an array of the station);
+```
+
+Load the instance of a passenger by ID.
+```
+loadInstanceOfPassengerById([id)
+  .then(results // returns an array with the passenger data);
+```
+
+Load the instance of a passenger by name.
+```
+loadInstanceOfPassengerByName([id)
+  .then(results // returns an array with the passenger data);
+```
+
+Perform database operations on the instance of passenger
+```
+passenger.save(); // inserts into database
+passenger.update(); // updates the database
+passenger.del(); // deletes from the database
+```
+
+##############################################################
 ## Specifications
 
 #### Commands
