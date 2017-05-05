@@ -35,8 +35,9 @@ End user, who is a programmer, can now play with the database interface to manag
 
 ### Classes implemented:
 -------------------------------------------------------------------------
-** Station ** -- creates station instances, and interfaces with database: 
+**Station** 
 
+Create station instances, and interfaces with database: 
 `const Station = require('./Classes/station');`
 
 Instantiate a station: new Station([id, [name, [order]]])
@@ -98,7 +99,9 @@ station.loadInstanceOfStationById([id)
 ```
 
 ---------------------------------------------------------------------------
-** Train Class ** -- creates train instances, and interfaces with database:
+**Train Class**
+
+Create train instances, and interfaces with database:
 `const Train = require('./Classes/train');`
 
 Creates a new instance of Train.
@@ -174,7 +177,9 @@ train.del(); // deletes from the database
 ```
 
 -----------------------------------------------------------------------------------
-** Passenger Class ** -- creates passenger instances, and interfaces with database:
+**Passenger Class**
+
+Create passenger instances, and interfaces with database:
 `const Passenger = require('./Classes/passenger');`
 
 Create an instance of a passenger:
