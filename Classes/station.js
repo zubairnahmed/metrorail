@@ -4,7 +4,7 @@ const genericQueries = require('../Database/Queries/generic.queries');
 const stationQueries = require('../Database/Queries/stations.queries');
 
 module.exports = class Station {
-  constructor(stationName = "", id = undefined, order = undefined) {
+  constructor(id = undefined, stationName = undefined, order = undefined) {
     this.id = id;
     this.stationName = stationName;
     this.order = order;

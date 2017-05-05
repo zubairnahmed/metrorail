@@ -1,5 +1,5 @@
 const Station = require('./Classes/station');
-const Train = require('./Classes/train')
+const Train = require('./Classes/train');
 const Passenger = require("./Classes/passenger");
 const db = require('./Database/database');
 
