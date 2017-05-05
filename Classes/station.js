@@ -120,4 +120,14 @@ module.exports = class Station {
         return this;
       })
   }
+
+  loadInstanceOfStationByName(stationName = this.stationName) {
+    return stationQueries.findStationByName(stationName)
+      .then(station => {
+        this.stationName = station[0].station_name;
+        this.order = station[0].order;
+        this.id = station[0].id;
+        return this;
+      })
+  }
 }
