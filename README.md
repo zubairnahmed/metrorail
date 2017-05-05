@@ -249,7 +249,7 @@ passenger.del(); // deletes from the database
 
 Expose the following commands (and more, if you need) using the `scripts` property of your `package.json`.
 
-- [ ] `$ npm run test`: run all tests.
+- [x] `$ npm run test`: run all tests.
 - [ ] `$ npm run repl`: open a REPL session with all your library code loaded.
 - [x] `$ npm run db:create`: create the database for the current `NODE_ENV`.
 - [x] `$ npm run db:migrate`: run all schema migrations for the database.
@@ -278,8 +278,8 @@ Create models with interfaces to satisfy the following user stories, assuming th
   - [x] save new trains to the database.
   - [x] update existing trains in the database.
   - [x] delete a train from the database.
-- [ ] As a user of the `Train` model, I receive appropriate and descriptive errors.
-- [ ] As a user of the `Station` model, I can run unit tests that exercise the specs for every public property, instance method, and class method.
+- [x] As a user of the `Train` model, I receive appropriate and descriptive errors.
+- [x] As a user of the `Station` model, I can run unit tests that exercise the specs for every public property, instance method, and class method.
 - [x] As a user of the `Station` model, I can...
   - [x] get the ID of a particular station.
   - [x] get the location of a particular station.
@@ -294,8 +294,8 @@ Create models with interfaces to satisfy the following user stories, assuming th
   - [x] save new stations to the database.
   - [x] update existing stations in the database.
   - [x] delete a station from the database.
-- [ ] As a user of the `Station` model, I receive appropriate and descriptive errors.
-- [ ] As a user of the `Station` model, I can run unit tests that exercise the specs for every public property, instance method, and class method.
+- [x] As a user of the `Station` model, I receive appropriate and descriptive errors.
+- [x] As a user of the `Station` model, I can run unit tests that exercise the specs for every public property, instance method, and class method.
 - [x] As a user of the `Passenger` model, I can...
   - [x] get the ID of a particular passenger.
   - [x] get the name of a particular passenger.
@@ -313,9 +313,9 @@ Create models with interfaces to satisfy the following user stories, assuming th
   - [x] save new passengers to the database.
   - [x] update existing passengers in the database.
   - [x] delete a passenger from the database.
-- [ ] As a user of the `Passenger` model, I receive appropriate and descriptive errors.
-- [ ] As a user of the `Station` model, I can run unit tests that exercise the specs for every public property, instance method, and class method.
-- [ ] Repository includes a README file with basic installation and setup instructions.
+- [x] As a user of the `Passenger` model, I receive appropriate and descriptive errors.
+- [x] As a user of the `Station` model, I can run unit tests that exercise the specs for every public property, instance method, and class method.
+- [x] Repository includes a README file with basic installation and setup instructions.
 - [x] All dependencies are properly declared in `package.json`.
 - [x] All major features are added via pull requests with a clear description and concise commit messages.
 - [x] Code uses a linter and there are no linting errors.
