@@ -87,7 +87,30 @@ module.exports = class Station {
       })
   }
 
-  // this finds a station by ID and makes it persist
+  formatForDb() {
+    return {
+      id: this.id,
+      station_name: this.stationName,
+      order: this.order
+    };
+  }
+
+  save() {
+    return genericQueries.save("stations", this.formatForDb())
+      .then(id => {
+        this.id = id[0];
+        return this;
+      })
+  }
+
+  update() {
+    return genericQueries.update("stations", this.formatForDb());
+  }
+
+  del() {
+    return genericQueries.del("stations", this.id);
+  }
+
   loadInstanceOfStationById(id = this.id) {
     return stationQueries.findStationById(id)
       .then(station => {
