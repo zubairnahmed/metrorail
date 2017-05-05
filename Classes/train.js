@@ -9,7 +9,7 @@ module.exports = class Train {
     this.number = number;
     this.numberOfPassengers = undefined;
     this.capacity = capacity;
-    this.currentStationId = undefined;
+    this.currentStationId = 1;
   }
 
   getNumber() {
@@ -47,7 +47,6 @@ module.exports = class Train {
       stationQueries.getCountOfStations()
     ])
     .then( ([ station, count ]) => {
-      // return (( station[ 0 ].order + 1 ) % ( station[ 0 ].order + 1 )) || 1;
       if ((station[0].order + 1) > count[0].count) {
         return 1;
       }
